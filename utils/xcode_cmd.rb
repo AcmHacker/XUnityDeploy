@@ -1,11 +1,10 @@
 #encoding = utf-8
 
-module XUnityDeloy
+module XUnityDeploy
     class XcodeCmd
-        attr_access :project_name
-        attr_access :root_path
-
-        attr_access :xcode_version
+        attr_accessor :project_name
+        attr_accessor :root_path
+        attr_accessor :xcode_version
 
         def initialize project_name
             @project_name = project_name

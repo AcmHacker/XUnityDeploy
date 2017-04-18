@@ -1,11 +1,11 @@
 #encoding = utf-8
 
 # call unity command to build unity project
-module XUnityDeloy
+module XUnityDeploy
     class UnityCmd
-        attr_access :project_path
-        attr_access :method
-        attr_access :log_path
+        attr_accessor :project_path
+        attr_accessor :method
+        attr_accessor :log_path
 
         def initialize project_path, method, log_path
             super
