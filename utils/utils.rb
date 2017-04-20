@@ -10,10 +10,13 @@ UnityProjectPath = File.join(File.dirname(__FILE__), "../../")
 DeployProjectPath = File.join(UnityProjectPath, "XUnityDeploy")
 
 #deploy config file path
-ConfigPath = File.join(DeployProjectPath, "config")
+ConfigPath = File.join(DeployProjectPath, "configs")
 
 #deploy build path
-BuildPath = File.join(DeployProjectPath, "build")
+BuildPath = File.join(DeployProjectPath, "builds")
+
+#deploy build path
+LogPath = File.join(DeployProjectPath, "logs")
 
 # require XUnityDeploy Scripts
 require File.expand_path(File.join(DeployProjectPath, "utils/optparse"))
@@ -25,7 +28,7 @@ require File.expand_path(File.join(DeployProjectPath, "utils/xcode_cmd"))
 require File.expand_path(File.join(DeployProjectPath, "utils/svn_cmd"))
 require File.expand_path(File.join(DeployProjectPath, "utils/git_cmd"))
 
-require File.expand_path(File.join(DeployProjectPath, "unity/unity"))
+require File.expand_path(File.join(DeployProjectPath, "unitys/unity"))
 
 module XUnityDeploy
     module Utils

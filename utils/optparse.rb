@@ -6,9 +6,11 @@ DeployOptions = {
     :platform => :ios,
     :client_mode => :develop,
     :channel_name => :official,
+    :is_log => false,
 }
 
 ARGV.clone.options do |opts|  
+    # platform
     opts.on("-p", "--platform=name", String,  
         "Specifies the client platform (ios/android).",
         "Default: ios"
@@ -17,12 +19,21 @@ ARGV.clone.options do |opts|
         DeployOptions[:platform] = v.to_sym 
     end
 
+    #client mode
     opts.on("-c", "--client_mode=mode", String,  
         "Specifies the client mode  (develop/business/publish).",
         "Default: develop"
     ) do |v| 
         raise "client_mode param '#{v}' error." unless [:develop, :business, :publish].include?(v.to_sym)
         DeployOptions[:client_mode] = v 
+    end
+
+    #is log
+    opts.on("-l", "--is_log=open", TrueClass,
+        "open log or close log  (true/false).",
+        "Default: false"
+    ) do |v| 
+        DeployOptions[:is_log] = v 
     end
 
     opts.separator ""  
