@@ -11,12 +11,15 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 * `Git` or `Svn`
 
 ## 步骤
+
+* 拷贝`plugins/Editor`到`Assets/Editor`
+
 * 配置参数`main.info.json`, `main.projmods.json`, `export.plist`, `unity_deploy.plist`
 * `ruby scripts/run_unity.rb -p ios[android]`
 
 ## XUnityDeploy的流程图
 
-1. 由`run_xx`启动脚本
+1. 由`run_unity`启动脚本
 2. `Ruby`脚本生成`Unity`需要的配置`unity_deploy`
 3. `XUnityDeploy`读取`unity_deploy`配置，配置`Unity`项目，最后编译项目
 4. `UnityDeployPostprocess`在编译`Unity`之后需要配置`Xcode`项目(IOS)
@@ -50,6 +53,7 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 
 
 ## `说明`
+* `executeMethod class 'XUnityDeploy' could not be found` 需要把`plugins/Editor`拷贝到`Assets/Editor`
 
 * 这里关于`xcode`项目的配置在`Unity`的`XUnityDeploy`处理了，也就是配置`main.projmods.json`中的`build_settings`。这里还有一种方法在编译`Unity`之后，通过[Xcodeproj][url]配置`xcode`
 
