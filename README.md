@@ -12,6 +12,8 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 
 ## 步骤
 
+* 把`XUnityDeploy`放在`Assets`的同级目录
+
 * 拷贝`plugins/Editor`到`Assets/Editor`
 
 * 配置参数`main.info.json`, `main.projmods.json`, `export.plist`, `unity_deploy.plist`
