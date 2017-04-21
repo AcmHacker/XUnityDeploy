@@ -70,5 +70,7 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 
 * 自动提交客户端的脚本
 
+* 用`Xcodeproj`替代`Editor/XCodeEditor`
+
 [url]: https://github.com/CocoaPods/Xcodeproj
 [export]: http://www.matrixprojects.net/p/xcodebuild-export-options-plist/
