@@ -11,20 +11,18 @@ module XUnityDeploy
             compile_android_before
 
             compile_unity
-
-            logger.debug("compile android")
         end
 
         def compile_ios
             compile_ios_before
 
             compile_unity
-            
-            logger.debug("compile ios")
+
+            xcode = XUnityDeploy::XCodeCmd.new "Unity-iPhone.xcodeproj"
+            xcode.run
         end
 
         def compile_unity
-            logger.info("Start Compile Unity Project(#{DeployOptions[:platform]}) ...")
             cmd = UnityCmd.new get_unity_method
 
             raise "***Compile #{DeployOptions[:platform]} failed!" unless cmd.build
@@ -38,6 +36,9 @@ module XUnityDeploy
         end
 
         def compile_ios_before
+            # remove old project path
+            path = File.join(BuildPath, "ios")
+            FileUtils.remove_entry(path, true)
         end
 
         # generate unity config file and use them in compile unity

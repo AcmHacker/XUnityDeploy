@@ -1,0 +1,24 @@
+{
+	"UIViewControllerBasedStatusBarAppearance" : false,
+	"ITSAppUsesNonExemptEncryption" : false,
+	"NSAppTransportSecurity" : {
+		"NSAllowsArbitraryLoads" : true
+	},
+	"UIRequiresFullScreen" : true,
+	"UIRequiredDeviceCapabilities" : [
+		"armv7",
+		"gamekit"
+	],
+	"NSCalendarsUsageDescription" : "Calendar usage required for in-game events.",
+	"NSPhotoLibraryUsageDescription" : "Photo Library usage required for sharing in-game footage & screenshots.",
+	"NSMicrophoneUsageDescription" : "Microphone usage required for live broadcasting service.",
+	"NSCameraUsageDescription" : "Camera usage required for live broadcasting service.",
+
+	"CFBundleURLTypes" : 
+	[
+		{
+			"name" : "",
+			"value" : ""
+		}
+	]
+}

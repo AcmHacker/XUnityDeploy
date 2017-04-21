@@ -2,9 +2,11 @@
 # require 3rd lib
 require 'yaml'
 require 'json'
+require 'fileutils'
+require 'pathname'
 
 #untiy project path
-UnityProjectPath = File.join(File.dirname(__FILE__), "../../")
+UnityProjectPath = Pathname.new(File.dirname(__FILE__)).join("../../").cleanpath
 
 #deploy unity path, 
 DeployProjectPath = File.join(UnityProjectPath, "XUnityDeploy")
@@ -39,5 +41,9 @@ module XUnityDeploy
             path = File.join(DeployConfig, name + ".yml")
             return YAML::load(File.open(path))
         end
-    end    
+    end 
+
+    def version
+        "1.0"
+    end   
 end

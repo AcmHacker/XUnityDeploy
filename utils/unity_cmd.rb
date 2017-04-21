@@ -18,5 +18,9 @@ module XUnityDeploy
             end
             cmd.sys_call_with_log
         end
+
+        # TODO check unity environment
+        def check
+        end
     end
 end

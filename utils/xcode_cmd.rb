@@ -1,64 +1,62 @@
 #encoding = utf-8
 
 module XUnityDeploy
-    class XcodeCmd
-        attr_accessor :project_name
-        attr_accessor :root_path
-        attr_accessor :xcode_version
+    class XCodeCmd
 
         def initialize project_name
-            @project_name = project_name
-            @xarchive_path = File.join(BuildPath, "ios.xcharchive")
+            @project_path = File.join(BuildPath, "ios", project_name)
+            @xarchive_path = File.join(BuildPath, "ios.xcarchive")
             @ipa_path = File.join(BuildPath, "ios.ipa")
-            @xcode_plist_path = File.join(ConfigPath, "xcode.plist")
+            @export_plist = File.join(ConfigPath, "export.plist")
 
-            @xcode_sign_identify = ""
+            config_path = File.join(ConfigPath, "xcode", "main.projmods.json")
+            config = JSON.parse (File.read_all(config_path))
+            @xcode_sign_identify = config['build_settings']['CODE_SIGN_IDENTITY']
 
-            @xcode_version = xcode_version
         end
 
-        def build
+        def run
+            # build xcode
+            build
 
+            #sign ipa
+            sign
         end 
 
         private
-        def remove_old_files
-            "rm -rf #{}".sys_call
+        def build
+            # remove old files
 
-            "rm -rf #{@ipa_path}".sys_call
+            FileUtils.remove_entry(@xarchive_path, true)
+            FileUtils.remove_entry(@ipa_path, true)
+
+            cmd = "xcodebuild -project #{@project_path} -scheme 'Unity-iPhone' archive -archivePath #{@xarchive_path}"
+            # cmd = "xcodebuild -project #{@project_path} -scheme 'Unity-iPhone' archive"
+
+            if cmd.sys_call_with_log or File.exist?(@xarchive_path) then
+                logger.info("xcode build ok.")
+            else
+                raise "xcode build error"
+            end
         end       
+
+        def sign
+            ipa_dir_path = BuildPath
+            cmd = "xcodebuild -exportArchive -archivePath #{@xarchive_path} -exportPath #{ipa_dir_path} -exportOptionsPlist #{@export_plist}"
+            raise "xcodebuild export error!" unless cmd.sys_call_with_log
+
+            #rename
+            File.rename(File.join(ipa_dir_path, "Unity-iPhone.ipa"), @ipa_path)
+        end
 
         def xcode_version
             version = "xcodebuild -version | grep 'Xcode' | awk '{print $2}'".sys_call_with_result
-        end
+        end     
 
-        def xcode6?
-            @xcode_version.start_with?('6.')
-        end
-
-        def xcode7?
-            @xcode_version.start_with?('7.')
-        end
-
-        def xcode8?
-            @xcode_version.start_with?('8.')
-        end
-
-        def sign_ipa
-            profile_name = "todo"
-
-            if xcode6? 
-                cmd = "xcodebuild -exportArchive -exportFormat ipa -archivepath #{@xarchive_path} -exportPath #{@ipa_path} -exportProvisioningProfile #{@profile_name}"
-            else
-                cmd = "xcodebuild -exportArchive -archivePath #{@xarchive_path} -exportPath #{@project_path} -exportOptionsPlist #{xcode_plist_path}"
-            end
-
-            if not xcode6?
-                cmd = "mv #{@project_path}/Unity-iPhone.ipa #{@ipa_path}"
-                raise "mv ipa error!" unless cmd.sys_call
-            end
-        end
-
+        # TODO check xcode environment
+        def check
+            
+        end           
     end
 end
 

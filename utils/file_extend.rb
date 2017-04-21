@@ -5,7 +5,11 @@ class File
         # todo
     end
 
-    def self.read_all_lines file_name
-        File.readlines(file_name).join('\n')
+    def self.read_all file_name
+        content = ""
+        File.readlines(file_name).each do |line|
+            content << line
+        end
+        content
     end
 end

@@ -9,8 +9,9 @@ module XUnityDeploy
         # channel
         attr_accessor :channel_id
 
-        # TODO Subclass implementation
+        # Subclass implementation
         def run
+            logger.info("Start Compile Unity Project(#{DeployOptions[:platform]}) ...")
 
             init_compile_config
 
@@ -20,7 +21,7 @@ module XUnityDeploy
         end
 
         protected
-        # set compile config in client
+        # Set compile config in client
         def init_compile_config
         end
         

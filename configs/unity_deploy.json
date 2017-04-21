@@ -2,7 +2,7 @@
     "ios" :
     {
         "Version" : "0.0",
-        "BundleIdentifier" : "com.example.one",
+        "BundleIdentifier" : "com.acmhacker.ruby",
         "ProductName" : "example",
         "IsDevelopment" : true,
         "DefineSymbols" : "EXAMPLE",

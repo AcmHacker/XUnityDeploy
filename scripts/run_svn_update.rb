@@ -2,5 +2,5 @@
 require File.expand_path(File.dirname(__FILE__) + "/../utils/utils")
 include XUnityDeploy::Logger
 
-compile = XUnityDeploy::CompileUnity.new
-compile.run
+svn = XUnityDeploy::SvnCmd.new
+svn.run
