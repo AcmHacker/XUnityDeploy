@@ -1,0 +1,39 @@
+{
+    "group": "",
+    "patches" : [],
+    "libs": 
+    [
+        "libz.dylib"
+    ],
+    "frameworks": 
+    [
+        "Security.framework",
+        "SystemConfiguration.framework",
+        "MobileCoreServices.framework",
+        "CFNetwork.framework",
+        "CoreFoundation.framework"
+    ],
+    "headerpaths": [],
+    "files": 
+    [
+
+    ],
+    "folders": [],
+    "excludes": 
+    [
+        "^.*\\.meta$", 
+        "^.*\\.mdown^",
+         "^.*\\.pdf$"
+    ],
+    "linker_flags" : 
+    [
+
+    ],
+    "compiler_flags" : 
+    [
+        "-ObjC"
+    ],
+    "build_settings" : 
+    {
+    }
+}

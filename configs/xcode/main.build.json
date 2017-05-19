@@ -2,6 +2,7 @@
 	"info" : "main.info.json",
 	"projmods" : 
 	[
-		"main.projmods.json"
+		"main.projmods.json",
+		"anysdk.projmods.json"
 	]
 }

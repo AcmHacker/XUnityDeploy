@@ -2,12 +2,18 @@
 
 module XUnityDeploy
     class CompileBase
-        # version
-        attr_accessor :version
-        # platform(ios / android)
-        attr_accessor :platform
+        # game name
+        attr_accessor :game_name
         # channel
-        attr_accessor :channel_id
+        attr_accessor :channel
+        def initialize
+            config_path = File.join(ConfigPath, "unity_deploy.json")
+            config = JSON.parse (File.read_all(config_path))
+            platform_config = config[DeployOptions[:platform].to_s]
+
+            @game_name = platform_config["ProductName"]
+            @channel = platform_config["Channel"]             
+        end
 
         # Subclass implementation
         def run
