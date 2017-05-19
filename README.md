@@ -37,10 +37,26 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 * builds 最终生成包的目录(apk, xcode project, ipa)
 
 * configs 配置文件目录
+    + `android.keystore` 是`Android`的签名文件，需要自己替换，并在`unity_deploy`中配置keystore
+    + `export.plist` 是导出`ipa`包`xcode`需要的配置文件。其中`method`是`app-store`,`enterprise`, `ad-hoc`,`development`。参考[export.plist][export]
+
+```plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+		<key>compileBitcode</key>
+		<false/>
+        <key>method</key>
+        <string>development</string>
+</dict>
+</plist>
+```    
 
     + `unity_deploy.json` 是`Unity`在`XUnityDeploy`中读取的配置，用于配置`Unity`的项目
+
 ```json
-    {
+{
     "ios" :
     {
         "Version" : "1.0",
@@ -76,21 +92,6 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 }
 ```
 
-    + `android.keystore` 是`Android`的签名文件，需要自己替换，并在`unity_deploy`中配置keystore
-    + `export.plist` 是导出`ipa`包`xcode`需要的配置文件。其中`method`是`app-store`,`enterprise`, `ad-hoc`,`development`。参考[export.plist][export]
-
-```plist
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-		<key>compileBitcode</key>
-		<false/>
-        <key>method</key>
-        <string>development</string>
-</dict>
-</plist>
-```    
 
 * jenkins jenkins目录
 
