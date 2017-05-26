@@ -53,5 +53,17 @@ module XUnityDeploy
                 return "XUnityDeploy.BuildAndroid"
             end
         end
+
+        def support_il8n
+            path = File.join(ConfigPath, "xcode", "il8n")
+            to_path = File.join(BuildPath, "ios")
+            if File.directory?(path) then
+                 Dir.foreach(path) do |filename|
+                     source_path = File.join(path, filename)
+                     FileUtils.cp_r source_path, to_path
+                 end
+            end
+            
+        end
     end
 end
