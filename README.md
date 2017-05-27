@@ -115,6 +115,7 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 
 * 因为`Unity`切换平台(ios/android)比较慢，所以这里建议针对ios/android单独checkout一个目录
 
+* `Error Domain=IDEDistributionErrorDomain Code=14 "No applicable devices found."`。这里需要把`Ruby`版本设置为`system`，即使用`rvm use system` [参考][error_code14]
 
 ## TODO
 
@@ -126,3 +127,4 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 
 [url]: https://github.com/CocoaPods/Xcodeproj
 [export]: http://www.matrixprojects.net/p/xcodebuild-export-options-plist/
+[error_code14]: https://stackoverflow.com/questions/33901132/export-failed-error-using-xcodebuild-command-line-tool
