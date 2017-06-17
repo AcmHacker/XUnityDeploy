@@ -13,7 +13,9 @@
     [
 
     ],
-    "folders": ["deploy"],
+    "folders": 
+    [
+    ],
     "excludes": 
     [
         "^.*\\.meta$", 

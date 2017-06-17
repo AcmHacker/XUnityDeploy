@@ -15,7 +15,8 @@
     ],
     "folders": 
     [
-        "plugins"
+        "plugins",
+        "il8n"
     ],
     "excludes": 
     [
