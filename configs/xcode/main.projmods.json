@@ -36,5 +36,11 @@
         "GCC_ENABLE_CPP_EXCEPTIONS" : "YES",
         "GCC_ENABLE_OBJC_EXCEPTIONS" : "YES",
         "GCC_ENABLE_CPP_RTTI" : "YES"
+    },
+    "system_capabilities" : 
+    {
+        "com.apple.GameCenter" : true,
+        "com.apple.InAppPurchase" : false,
+        "com.apple.Push" : false
     }
 }

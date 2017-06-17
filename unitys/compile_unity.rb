@@ -55,15 +55,27 @@ module XUnityDeploy
         end
 
         def support_il8n
-            path = File.join(ConfigPath, "xcode", "il8n")
-            to_path = File.join(BuildPath, "ios")
-            if File.directory?(path) then
-                 Dir.foreach(path) do |filename|
-                     source_path = File.join(path, filename)
-                     FileUtils.cp_r source_path, to_path
-                 end
+            source_path = File.join(ConfigPath, "xcode", "il8n")
+            to_path = File.join(BuildPath, "ios", "il8n")
+
+            FileUtils.cp_r source_path, to_path
+        end
+
+
+        def system_capabilities proj_path, config_hash
+            proj = ::Xcodeproj::Project.open(proj_path)
+            uuid = proj.targets.first.uuid
+            capabilities = proj.root_object.attributes['TargetAttributes'][uuid]['SystemCapabilities']
+
+            config_hash.each do |key, value|
+                if value then 
+                    capabilities[key] = {"enabled" => "1"}
+                else
+                    capabilities[key] = {"enabled" => "0"}
+                end
             end
-            
+
+            proj.save
         end
     end
 end

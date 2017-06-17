@@ -88,12 +88,8 @@ public class XUnityDeploy
 
             var bundleId = "BundleIdentifier";
             if (config.ContainsKey(bundleId))
-            {                
-#if UNITY_5_5_OR_NEWER
-                PlayerSettings.SetApplicationIdentifier(target, config[bundleId].ToString());
-#else
-				PlayerSettings.bundleIdentifier = config[bundleId].ToString();
-#endif
+            {
+                PlayerSettings.bundleIdentifier = config[bundleId].ToString();
             }
 
             //product name
@@ -123,15 +119,9 @@ public class XUnityDeploy
                 PlayerSettings.strippingLevel = (StrippingLevel)Enum.Parse(typeof(StrippingLevel), config[strippingLevel].ToString(), true);
             }
 
-			var scriptBackent = "ScriptBackent";
-			if (config.ContainsKey (scriptBackent)) {
-				//PlayerSettings.SetScriptingBackend (target, ScriptingImplementation.IL2CPP);	
-				PlayerSettings.SetScriptingBackend(target, (ScriptingImplementation)Enum.Parse(typeof(ScriptingImplementation), config[scriptBackent].ToString(), true));
-			}
-
             //android
             if (target == BuildTargetGroup.Android)
-            {				
+            {
                 //obb
                 var obb = "OBB";
                 if (config.ContainsKey(obb))
@@ -192,29 +182,14 @@ public class XUnityDeploy
                 var targetOSVersion = "IOSTargetOSVersion";
                 if (config.ContainsKey(targetOSVersion)) {
                     // iOSTargetOSVersion.iOS_7_0;
-                    var osVersion = config[targetOSVersion].ToString();
-
-#if UNITY_5_5_OR_NEWER
-                    PlayerSettings.iOS.targetOSVersionString = osVersion;
-#else
-                    var infos = osVersion.Split('.');
-                    var iosVersion = string.Format("iOS_{0}_{1}", infos[0], infos[2]);
-
-                    PlayerSettings.iOS.targetOSVersion = (iOSTargetOSVersion)Enum.Parse(typeof(iOSTargetOSVersion), iosVersion, true);
-#endif //
+                    PlayerSettings.iOS.targetOSVersion = (iOSTargetOSVersion)Enum.Parse(typeof(iOSTargetOSVersion), config[targetOSVersion].ToString(), true);
                 }
-
+                    
                 //修改AOT的参数,否则会出现Ran Out Of Trampolines of Type 2
                 var aotOptions = "AotOptions";
                 if (config.ContainsKey(aotOptions)) {
                     // "nimt-trampolines=256";   
                     PlayerSettings.aotOptions = config[aotOptions].ToString();
-                }
-
-                var bundleVersionCode = "BundleVersionCode";
-                if (config.ContainsKey(bundleVersionCode))
-                {
-                    PlayerSettings.iOS.buildNumber = config[bundleVersionCode].ToString();
                 }
             }
         }

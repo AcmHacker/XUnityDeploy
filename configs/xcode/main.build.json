@@ -3,6 +3,6 @@
 	"projmods" : 
 	[
 		"main.projmods.json",
-		"anysdk.projmods.json"
+		"firebase.projmods.json"
 	]
 }

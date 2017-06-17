@@ -2,23 +2,21 @@
     "group": "",
     "patches" : [],
     "libs": 
-    [
-        "libz.dylib"
+    [    
     ],
     "frameworks": 
     [
-        "Security.framework",
-        "SystemConfiguration.framework",
-        "MobileCoreServices.framework",
-        "CFNetwork.framework",
-        "CoreFoundation.framework"
+        "GameKit.framework"
     ],
     "headerpaths": [],
     "files": 
     [
-
+        "../../../Assets/Plugins/iOS/GoogleService-Info.plist"
     ],
-    "folders": [],
+    "folders": 
+    [
+        "plugins"
+    ],
     "excludes": 
     [
         "^.*\\.meta$", 
@@ -35,5 +33,6 @@
     ],
     "build_settings" : 
     {
+        "CLANG_ENABLE_MODULES" : "YES"
     }
 }

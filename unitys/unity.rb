@@ -6,6 +6,10 @@ module XUnityDeploy
     autoload :CompileUnity, File.join(File.dirname(__FILE__), "compile_unity")
     # compile unity anysdk
     autoload :CompileUnityAnySDK, File.join(File.dirname(__FILE__), "compile_unity_anysdk")
+
+    # compile unity ren chang
+    autoload :CompileUnityRenChang, File.join(File.dirname(__FILE__), "compile_unity_renchang")
+    
     # analyze resource
     autoload :AnalyzeResource, File.join(File.dirname(__FILE__), "analyze_resource")
 end

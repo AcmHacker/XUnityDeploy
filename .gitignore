@@ -4,3 +4,4 @@ logs/*
 jekins/*
 configs/export.plist
 configs/unity_deploy.json
+configs/xcode/il8n
