@@ -16,7 +16,7 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 
 * 拷贝`plugins/Editor`到`Assets/Editor`
 
-* 配置参数`main.info.json`, `main.projmods.json`, `export.plist`, `unity_deploy.plist`
+* 配置参数`XUnityDeploy_configs`下的`main.info.json`, `main.projmods.json`, `export.plist`, `unity_deploy.plist`
 * `ruby scripts/run_unity.rb -p ios[android]`
 
 ## XUnityDeploy的流程图
@@ -36,7 +36,7 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 
 * builds 最终生成包的目录(apk, xcode project, ipa)
 
-* configs 配置文件目录
+* ../XUnityDeploy_configs 配置文件目录
     + `android.keystore` 是`Android`的签名文件，需要自己替换，并在`unity_deploy`中配置keystore
     + `export.plist` 是导出`ipa`包`xcode`需要的配置文件。其中`method`是`app-store`,`enterprise`, `ad-hoc`,`development`。参考[export.plist][export]
 

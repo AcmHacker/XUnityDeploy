@@ -41,12 +41,12 @@ module XUnityDeploy
 
         def config_capabilities
             proj_path = File.join(BuildPath, "ios", "Unity-iPhone.xcodeproj")
-            config_path = File.join(ConfigPath, "xcode", "main.build.json")
+            config_path = File.join(ConfigPath, "ios", "main.build.json")
 
             config = JSON.parse (File.read_all(config_path))
 
             config['projmods'].each do |item|
-                projmod_path = File.join(ConfigPath, "xcode", item)
+                projmod_path = File.join(ConfigPath, "ios", item)
                 projmods = JSON.parse(File.read_all(projmod_path))
 
                 capabilities = projmods['system_capabilities']

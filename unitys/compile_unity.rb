@@ -55,7 +55,7 @@ module XUnityDeploy
         end
 
         def support_il8n
-            source_path = File.join(ConfigPath, "xcode", "il8n")
+            source_path = File.join(ConfigPath, "ios", "il8n")
             to_path = File.join(BuildPath, "ios", "il8n")
 
             FileUtils.cp_r source_path, to_path

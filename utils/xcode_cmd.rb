@@ -9,7 +9,7 @@ module XUnityDeploy
             @ipa_path = File.join(BuildPath, "ios.ipa")
             @export_plist = File.join(ConfigPath, "export.plist")
 
-            config_path = File.join(ConfigPath, "xcode", "main.projmods.json")
+            config_path = File.join(ConfigPath, "ios", "main.projmods.json")
             config = JSON.parse (File.read_all(config_path))
             @xcode_sign_identify = config['build_settings']['CODE_SIGN_IDENTITY']
 

@@ -12,7 +12,7 @@ UnityProjectPath = Pathname.new(File.dirname(__FILE__)).join("../../").cleanpath
 DeployProjectPath = File.join(UnityProjectPath, "XUnityDeploy")
 
 #deploy config file path
-ConfigPath = File.join(DeployProjectPath, "configs")
+ConfigPath = File.join(UnityProjectPath, "XUnityDeploy_configs")
 
 #deploy build path
 BuildPath = File.join(DeployProjectPath, "builds")
