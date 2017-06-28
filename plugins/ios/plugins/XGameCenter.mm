@@ -55,6 +55,7 @@
         if ([[GKLocalPlayer localPlayer] isAuthenticated]) {
             XLog(@"已授权.");
         } else {
+            /*
             //注意：在设置中找到Game Center，设置其允许沙盒，否则controller为nil
             if (controller != nil) {
                 //登录
@@ -63,6 +64,8 @@
             else {
                 XLog(@"在设置中找到Game Center，设置其允许沙盒");
             }
+             */
+            XLog(@"未授权");
         }
     }];
 }

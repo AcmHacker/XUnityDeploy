@@ -11,16 +11,16 @@
 
 #define ALog(format, ...) NSLog((@"%s [L%d] " format), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
-#ifndef RELEASE
-#define XLog(format, ...) ALog(format, ##__VA_ARGS__)
-#else
-#define XLog(...)
-#endif
 //#ifndef RELEASE
-//#define XLog(format, ...)
+//#define XLog(format, ...) ALog(format, ##__VA_ARGS__)
 //#else
 //#define XLog(...)
 //#endif
+#ifndef RELEASE
+#define XLog(format, ...)
+#else
+#define XLog(...)
+#endif
 
 #define PSTRING(str) [NSString stringWithUTF8String:str]
 #define PSTRING2(value) [NSString stringWithFormat:@"%@", value]
