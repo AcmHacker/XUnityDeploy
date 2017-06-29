@@ -36,6 +36,12 @@
 - (void)openGameCenter {
     if (![GKLocalPlayer localPlayer].isAuthenticated) {
         XLog(@"未获得用户授权.");
+        NSString *title = NSLocalizedStringFromTable(@"Warn", @"InfoPlist", nil);
+        NSString *message = NSLocalizedStringFromTable(@"GameCenterCannotOpen", @"InfoPlist", nil);
+        NSString *ok = NSLocalizedStringFromTable(@"OK", @"InfoPlist", nil);
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:ok otherButtonTitles:nil];
+        [alertView show];
         return;
     }
     //Game Center视图控制器
