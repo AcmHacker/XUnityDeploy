@@ -6,8 +6,10 @@ module XUnityDeploy
 
         protected
         def compile_android
-            super 
+            # copy firebase configs
+            copy_firebase_configs
 
+            super 
         end
 
         def compile_ios
@@ -26,6 +28,16 @@ module XUnityDeploy
 
             xcode = XUnityDeploy::XCodeCmd.new "Unity-iPhone.xcodeproj"
             xcode.run
+        end
+
+        def copy_firebase_configs
+            script_path = File.join(DeployProjectPath, 'tools', 'Firebase', 'generate_xml_from_google_services_json.py')
+            in_path = File.join(ConfigPath, 'firebase', 'google-services.json')
+            out_path = File.join(UnityProjectPath, 'Assets', 'Plugins', 'Android', 'Firebase', 'res', 'values', 'googleservices.xml')
+
+            cmd = "python #{script_path} -i #{in_path} -o #{out_path}"
+            
+            "copy firebase configs error" unless cmd.sys_call 
         end
 
         # add Pods.xcodeproj to unity
