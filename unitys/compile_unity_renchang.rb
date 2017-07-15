@@ -33,11 +33,15 @@ module XUnityDeploy
         def copy_firebase_configs
             script_path = File.join(DeployProjectPath, 'tools', 'Firebase', 'generate_xml_from_google_services_json.py')
             in_path = File.join(ConfigPath, 'firebase', 'google-services.json')
+            out_path = File.join(UnityProjectPath, 'Assets', 'Plugins', 'Android', 'Firebase', 'res', 'values', 'googleservices.xml')
+
+            cmd = "python #{script_path} -i #{in_path} -o #{out_path}"                        
+            "copy firebase configs error" unless cmd.sys_call 
+
             out_path = File.join(UnityProjectPath, 'Assets', 'Plugins', 'Android', 'Firebase', 'res', 'values', 'google-services.xml')
 
-            cmd = "python #{script_path} -i #{in_path} -o #{out_path}"
-            
-            "copy firebase configs error" unless cmd.sys_call 
+            cmd = "python #{script_path} -i #{in_path} -o #{out_path}"                        
+            "copy firebase configs error2" unless cmd.sys_call 
         end
 
         # add Pods.xcodeproj to unity
