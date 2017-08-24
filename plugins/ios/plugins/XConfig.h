@@ -38,6 +38,9 @@
 #define XSHARE_INSTANCE()  \
 + (instancetype)shareInstance;
 
+//定义init(这个可以不用c#层调用，就可以init)
+#define XCALL_INIT(ClassName) \
+static ClassName* _instance = [ClassName shareInstance];
 
 //类单例的宏
 #define XCLASS_INSTANCE(ClassName) \
