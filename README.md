@@ -48,7 +48,7 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
     + `android.keystore` 是`Android`的签名文件，需要自己替换，并在`unity_deploy`中配置keystore
     + `export.plist` 是导出`ipa`包`xcode`需要的配置文件。其中`method`是`app-store`,`enterprise`, `ad-hoc`,`development`。参考[export.plist][export]
 
-```plist
+```text
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -59,9 +59,8 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
         <string>development</string>
 </dict>
 </plist>
-```    
-
-    + `unity_deploy.json` 是`Unity`在`XUnityDeploy`中读取的配置，用于配置`Unity`的项目
+``` 
++ `unity_deploy.json` 是`Unity`在`XUnityDeploy`中读取的配置，用于配置`Unity`的项目
 
 ```json
 {
@@ -99,7 +98,6 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
     }
 }
 ```
-
 
 * jenkins jenkins目录
 
