@@ -10,6 +10,8 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 
 * `Git` or `Svn`
 
+* [`ios-deploy`][ios-deploy]
+
 ## 步骤
 
 * 把`XUnityDeploy`放在`Assets`的同级目录
@@ -32,6 +34,12 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 
 5. 对生成包进行重命名，并提交到down serve上
 
+## Rake使用
+* rake update 更新项目
+* rake compile:ios 编译ios项目 
+* rake compile:android 编译android项目
+* rake install:ios 安装ios包
+* rake install:android 安装android包
 ## 目录结构说明
 
 * builds 最终生成包的目录(apk, xcode project, ipa)
@@ -128,3 +136,4 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 [url]: https://github.com/CocoaPods/Xcodeproj
 [export]: http://www.matrixprojects.net/p/xcodebuild-export-options-plist/
 [error_code14]: https://stackoverflow.com/questions/33901132/export-failed-error-using-xcodebuild-command-line-tool
+[ios-deploy]: https://github.com/phonegap/ios-deploy
