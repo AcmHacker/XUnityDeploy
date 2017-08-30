@@ -50,6 +50,7 @@ static ClassName* _instance = [ClassName shareInstance];
     static dispatch_once_t onceToken; \
     dispatch_once(&onceToken, ^{ \
         _kshareInstance = [[ClassName alloc] init]; \
+        [_kshareInstance initCreate]; \
     }); \
     return _kshareInstance; \
 }
