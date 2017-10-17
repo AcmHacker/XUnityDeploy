@@ -2,6 +2,10 @@
 task :update do
     desc "update unity project and deploy project"
     system ("git pull && cd .. && git pull")
+
+    desc "update gitversion in Assets/Resources/info.txt"
+    # use printf , not use echo
+    system ("cd .. && printf $(git rev-list HEAD --abbrev-commit --max-count=1) > Assets/Resources/info.txt")
 end
 
 namespace :compile do
