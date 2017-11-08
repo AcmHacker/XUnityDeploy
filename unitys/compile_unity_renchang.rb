@@ -7,7 +7,7 @@ module XUnityDeploy
         protected
         def compile_android
             # copy firebase configs
-            copy_firebase_configs
+            # copy_firebase_configs
 
             super 
         end
@@ -24,7 +24,7 @@ module XUnityDeploy
             config_capabilities            
 
             # add Pods.xcodeproj
-            add_pods_to_unity
+            # add_pods_to_unity
 
             xcode = XUnityDeploy::XCodeCmd.new "Unity-iPhone.xcodeproj"
             xcode.run

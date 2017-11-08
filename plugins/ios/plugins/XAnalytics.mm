@@ -8,7 +8,7 @@
 
 #import "XAnalytics.h"
 #import "XConfig.h"
-#import <FirebaseCore/FIRApp.h>
+// #import <FirebaseCore/FIRApp.h>
 
 @implementation XAnalytics
 
@@ -19,7 +19,7 @@ extern "C"
     //初始化
     void _InitAnalytics()
     {
-        [FIRApp configure];
+        // [FIRApp configure];
     }
 }
 
