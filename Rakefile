@@ -33,14 +33,18 @@ namespace :compile do
         task :ios => :update do
             system ("ruby scripts/run_unity_renchang.rb -p ios --is_log=true")
 
-            system ("ruby scripts/run_bearychat.rb 'IOS端编译完成' ")
+            # system ("ruby scripts/run_bearychat.rb 'IOS端编译完成' ")
+            Rake::Task["bearychat:send"].invoke("IOS端编译完成")
+            Rake::Task["bearychat:send"].reenable
         end
 
         desc "compile renchang unity android"
         task :android => :update do
             system ("ruby scripts/run_unity_renchang.rb -p android --is_log=true")
 
-            system ("ruby scripts/run_bearychat.rb 'Android端编译完成' ")
+            # system ("ruby scripts/run_bearychat.rb 'Android端编译完成' ")
+            Rake::Task["bearychat:send"].invoke("Android端编译完成")
+            Rake::Task["bearychat:send"].reenable
         end
     end    
 end
@@ -59,6 +63,14 @@ namespace :fir do
     end
 end
 
+namespace :bearychat do
+    desc "send msg to  bearychat"
+    task :send, [:msg] do |t, args|
+        args.with_defaults(:msg => '空(nil)')
+        system ("ruby scripts/run_bearychat.rb " + args[:msg])
+    end
+end
+
 namespace :auto do
     desc "auto compile renchang-unity ios"
     task :ios do
@@ -70,6 +82,12 @@ namespace :auto do
     task :android do
         Rake::Task["compile:renchang:android"].invoke
         Rake::Task["fir:android"]
+    end
+
+    desc "auto compile renchang-unity ios & android"
+    task :all do
+        Rake::Task["auto:ios"].invoke
+        Rake::Task["auto:android"].invoke
     end
 end
 
@@ -84,3 +102,20 @@ namespace :install do
         system ("adb install -r ./builds/android.apk")
     end
 end
+
+# namespace :test do
+#     task :test1 do        
+#         Rake::Task["bearychat:send"].invoke("t1")
+#         Rake::Task["bearychat:send"].reenable
+#         Rake::Task["bearychat:send"].invoke("t2")
+#     end
+
+#     task :test2 do |t, args|
+#         puts t
+#         puts args
+#     end
+
+#     task :test3 do
+#         Rake::Task["test:test2"].execute("test", "12")
+#     end
+# end
