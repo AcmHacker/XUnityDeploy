@@ -32,26 +32,44 @@ namespace :compile do
         desc "compile renchang unity ios"
         task :ios => :update do
             system ("ruby scripts/run_unity_renchang.rb -p ios --is_log=true")
+
+            system ("ruby scripts/run_bearychat.rb 'IOS端编译完成' ")
         end
 
         desc "compile renchang unity android"
         task :android => :update do
             system ("ruby scripts/run_unity_renchang.rb -p android --is_log=true")
+
+            system ("ruby scripts/run_bearychat.rb 'Android端编译完成' ")
         end
     end    
+end
+
+namespace :fir do
+    desc "fir publish ios"
+    task :ios, [:msg] do |t, args|
+        args.with_defaults(:msg => '版本更新')
+        system ("fir publish ./builds/ios.ipa -c " + args[:msg])
+    end
+
+    desc "fir publish android"
+    task :android, [:msg] do |t, args|
+        args.with_defaults(:msg => '版本更新')
+        system ("fir publish ./builds/android.apk -c " + args[:msg])
+    end
 end
 
 namespace :auto do
     desc "auto compile renchang-unity ios"
     task :ios do
         Rake::Task["compile:renchang:ios"].invoke
-        system ("fir publish ./builds/ios.ipa -c '版本更新'")
+        Rake::Task["fir:ios"]
     end
 
     desc "auto compile renchang-unity android"
     task :android do
         Rake::Task["compile:renchang:android"].invoke
-        system ("fir publish ./builds/android.apk -c '版本更新'")
+        Rake::Task["fir:android"]
     end
 end
 

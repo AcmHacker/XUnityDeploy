@@ -30,6 +30,7 @@ require File.expand_path(File.join(DeployProjectPath, "utils/xcode_cmd"))
 require File.expand_path(File.join(DeployProjectPath, "utils/svn_cmd"))
 require File.expand_path(File.join(DeployProjectPath, "utils/git_cmd"))
 require File.expand_path(File.join(DeployProjectPath, "utils/anysdk_cmd"))
+require File.expand_path(File.join(DeployProjectPath, "utils/bearychat_cmd"))
 
 require File.expand_path(File.join(DeployProjectPath, "unitys/unity"))
 
