@@ -117,7 +117,7 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 
 * 这里关于`xcode`项目的配置在`Unity`的`XUnityDeploy`处理了，也就是配置`main.projmods.json`中的`build_settings`。这里还有一种方法在编译`Unity`之后，通过[Xcodeproj][url]配置`xcode`
 
-* `Error Domain=IDEDistributionErrorDomain Code=1 "The operation couldn’t be completed` 修改`export.plist`
+* `Error Domain=IDEDistributionErrorDomain Code=1 "The operation couldn’t be completed` 修改`export.plist`。还碰到过`WWDR certificate expired`, 需要重新更新一下，[参考][wwdr]
 
 * 因为`Unity`切换平台(ios/android)比较慢，所以这里建议针对ios/android单独checkout一个目录
 
@@ -134,4 +134,5 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 [url]: https://github.com/CocoaPods/Xcodeproj
 [export]: http://www.matrixprojects.net/p/xcodebuild-export-options-plist/
 [error_code14]: https://stackoverflow.com/questions/33901132/export-failed-error-using-xcodebuild-command-line-tool
+[wwdr]: http://ajmccall.com/idedistributionerrordomain-code-1-error-and-fastlane/
 [ios-deploy]: https://github.com/phonegap/ios-deploy
