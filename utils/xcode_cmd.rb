@@ -13,6 +13,7 @@ module XUnityDeploy
             config = JSON.parse (File.read_all(config_path))
             @xcode_sign_identify = config['build_settings']['CODE_SIGN_IDENTITY']
 
+            @xcodebuild_safe = File.join(ToolPath, "bash", "xcodebuild-safe.sh")
         end
 
         def run
@@ -30,7 +31,7 @@ module XUnityDeploy
             FileUtils.remove_entry(@xarchive_path, true)
             FileUtils.remove_entry(@ipa_path, true)
 
-            cmd = "xcodebuild -project #{@project_path} -scheme 'Unity-iPhone' archive -archivePath #{@xarchive_path}"
+            cmd = "#{@xcodebuild_safe} -project #{@project_path} -scheme 'Unity-iPhone' archive -archivePath #{@xarchive_path}"
             # cmd = "xcodebuild -project #{@project_path} -scheme 'Unity-iPhone' archive"
 
             if cmd.sys_call_with_log or File.exist?(@xarchive_path) then
@@ -42,7 +43,7 @@ module XUnityDeploy
 
         def sign
             ipa_dir_path = BuildPath
-            cmd = "xcodebuild -exportArchive -archivePath #{@xarchive_path} -exportPath #{ipa_dir_path} -exportOptionsPlist #{@export_plist}"
+            cmd = "#{@xcodebuild_safe} -exportArchive -archivePath #{@xarchive_path} -exportPath #{ipa_dir_path} -exportOptionsPlist #{@export_plist}"
             raise "xcodebuild export error!" unless cmd.sys_call_with_log
 
             #rename
@@ -56,7 +57,7 @@ module XUnityDeploy
         # TODO check xcode environment
         def check
             
-        end           
+        end         
     end
 end
 

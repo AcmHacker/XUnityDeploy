@@ -17,8 +17,11 @@ ConfigPath = File.join(UnityProjectPath, "XUnityDeploy_configs")
 #deploy build path
 BuildPath = File.join(DeployProjectPath, "builds")
 
-#deploy build path
+#deploy logs path
 LogPath = File.join(DeployProjectPath, "logs")
+
+#deploy tools path
+ToolPath = File.join(DeployProjectPath, "tools")
 
 # require XUnityDeploy Scripts
 require File.expand_path(File.join(DeployProjectPath, "utils/optparse"))

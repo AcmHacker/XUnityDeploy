@@ -46,4 +46,4 @@ ARGV.clone.options do |opts|
     opts.parse!
 end
 
-puts "Start XUnityDeploy Compile ..."
+puts "Start XUnityDeploy ..."
