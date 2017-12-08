@@ -75,13 +75,13 @@ namespace :auto do
     desc "auto compile renchang-unity ios"
     task :ios do
         Rake::Task["compile:renchang:ios"].invoke
-        Rake::Task["fir:ios"]
+        Rake::Task["fir:ios"].invoke
     end
 
     desc "auto compile renchang-unity android"
     task :android do
         Rake::Task["compile:renchang:android"].invoke
-        Rake::Task["fir:android"]
+        Rake::Task["fir:android"].invoke
     end
 
     desc "auto compile renchang-unity ios & android"
