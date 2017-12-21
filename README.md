@@ -53,10 +53,21 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-		<key>compileBitcode</key>
-		<false/>
+	<key>compileBitcode</key>
+	<false/>
         <key>method</key>
         <string>development</string>
+        <key>teamID</key>
+        <string>your team id</string>
+        <key>provisioningProfiles</key>
+        <dict>
+            <key>your bundle id</key>
+            <string>your provision name</string>
+        </dict>
+        <key>signingCertificate</key>
+        <string>iPhone Developer</string>
+        <key>signingStyle</key>
+        <string>manual</string>
 </dict>
 </plist>
 ``` 
