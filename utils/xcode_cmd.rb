@@ -31,8 +31,15 @@ module XUnityDeploy
             FileUtils.remove_entry(@xarchive_path, true)
             FileUtils.remove_entry(@ipa_path, true)
 
-            cmd = "#{@xcodebuild_safe} -project #{@project_path} -scheme 'Unity-iPhone' archive -archivePath #{@xarchive_path}"
-            # cmd = "xcodebuild -project #{@project_path} -scheme 'Unity-iPhone' archive"
+            # cmd = "#{@xcodebuild_safe} -project #{@project_path} -scheme 'Unity-iPhone' archive -archivePath #{@xarchive_path}"                        
+            cmd = ""
+            # workspace
+            if (@project_path.end_with?(".xcworkspace")) then
+                cmd = "#{@xcodebuild_safe} -workspace #{@project_path} -scheme 'Unity-iPhone' archive -archivePath #{@xarchive_path}"
+            else
+                # project
+                cmd = "#{@xcodebuild_safe} -project #{@project_path} -scheme 'Unity-iPhone' archive -archivePath #{@xarchive_path}"
+            end
 
             if cmd.sys_call_with_log or File.exist?(@xarchive_path) then
                 logger.info("xcode build ok.")
