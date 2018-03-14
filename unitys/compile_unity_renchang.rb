@@ -26,7 +26,7 @@ module XUnityDeploy
             # add Pods.xcodeproj
             # add_pods_to_unity
 
-            xcode = XUnityDeploy::XCodeCmd.new "Unity-iPhone.xcworkspace"
+            xcode = XUnityDeploy::XCodeCmd.new "Unity-iPhone"
             xcode.run
         end
 
