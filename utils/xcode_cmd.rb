@@ -4,8 +4,8 @@ module XUnityDeploy
     class XCodeCmd
 
         def initialize project_name
-            # xcworkspace or xcodeproj
-            if (File.exist?(File.join(BuildPath, "ios", project_name, ".xcworkspace"))) 
+            # xcworkspace or xcodeproj directory is exist
+            if (File.directory?(File.join(BuildPath, "ios", project_name + ".xcworkspace"))) 
                 project_name = project_name + ".xcworkspace"
             else 
                 project_name = project_name + ".xcodeproj"
