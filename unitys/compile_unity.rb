@@ -18,7 +18,7 @@ module XUnityDeploy
 
             compile_unity
 
-            xcode = XUnityDeploy::XCodeCmd.new "Unity-iPhone.xcodeproj"
+            xcode = XUnityDeploy::XCodeCmd.new "Unity-iPhone"
             xcode.run
         end
 

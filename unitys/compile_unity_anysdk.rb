@@ -27,7 +27,7 @@ module XUnityDeploy
 
             remove_ios_scheme
 
-            xcode = XUnityDeploy::XCodeCmd.new "Unity-iPhone-#{channel}.xcodeproj"
+            xcode = XUnityDeploy::XCodeCmd.new "Unity-iPhone-#{channel}"
             xcode.run
         end
 
