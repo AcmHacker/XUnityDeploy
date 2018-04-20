@@ -39,6 +39,10 @@ module XUnityDeploy
             # remove old project path
             path = File.join(BuildPath, "ios")
             FileUtils.remove_entry(path, true)
+
+            path = File.join(BuildPath, "ios.xcarchive")
+            FileUtils.remove_entry(path, true)
+            
         end
 
         # generate unity config file and use them in compile unity

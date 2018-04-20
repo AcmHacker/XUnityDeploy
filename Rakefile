@@ -71,11 +71,19 @@ namespace :bearychat do
     end
 end
 
+namespace :bugly do
+    desc "update dsym file to bugly"
+    task :upload do
+        system ("ruby scripts/run_bugly.rb")
+    end
+end
+
 namespace :auto do
     desc "auto compile renchang-unity ios"
     task :ios do
         Rake::Task["compile:renchang:ios"].invoke
         Rake::Task["fir:ios"].invoke
+        Rake::Task["bugly:upload"].invoke
     end
 
     desc "auto compile renchang-unity android"
