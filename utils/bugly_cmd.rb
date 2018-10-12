@@ -13,6 +13,13 @@ module XUnityDeploy
         end
         
         def build
+            path = File.join(ConfigPath, "bugly.json")
+            if not File.exists? (path) then
+                puts "bugly.json not exists"
+                return;
+            end
+
+
             project_path = UnityProjectPath
             bugly = File.join(ToolPath, "bugly", "buglySymboliOS.jar")
             dysm_path = File.join(BuildPath, "ios.xcarchive", "dSYMs", "cannon.app.dSYM")
