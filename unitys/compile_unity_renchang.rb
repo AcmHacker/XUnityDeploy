@@ -17,9 +17,6 @@ module XUnityDeploy
 
             compile_unity
 
-            # support il8n
-            # support_il8n
-
             #config 
             config_capabilities            
 

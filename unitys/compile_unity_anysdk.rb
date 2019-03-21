@@ -16,9 +16,6 @@ module XUnityDeploy
             compile_ios_before
 
             compile_unity
-
-            # support il8n
-            support_il8n
             
             remove_ios_target
 

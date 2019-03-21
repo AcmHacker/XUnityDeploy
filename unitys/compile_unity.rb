@@ -58,14 +58,6 @@ module XUnityDeploy
             end
         end
 
-        def support_il8n
-            source_path = File.join(ConfigPath, "ios", "il8n")
-            to_path = File.join(BuildPath, "ios", "il8n")
-
-            FileUtils.cp_r source_path, to_path
-        end
-
-
         def system_capabilities proj_path, config_hash
             proj = ::Xcodeproj::Project.open(proj_path)
             uuid = proj.targets.first.uuid

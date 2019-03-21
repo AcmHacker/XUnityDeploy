@@ -134,6 +134,23 @@ XUnityDeploy是针对Unity自动化编译Android/IOS的脚本。
 
 * `Error Domain=IDEDistributionErrorDomain Code=14 "No applicable devices found."`。这里需要把`Ruby`版本设置为`system`，即使用`rvm use system` [参考][error_code14]
 
+---
+
+### 关于对i18n支持
+
+在项目中，需要支持游戏APP应用名称多国化，只需要配置一个`i18n.projmods.json`即可，在`i18n.projmods.json`中，指定对于的`InfoPlist.strings`, 比如
+
+```
+    "files": 
+    [
+        "i18n/en.lproj/InfoPlist.strings",
+        "i18n/zh-Hans.lproj/InfoPlist.strings",
+        "i18n/zh-Hant.lproj/InfoPlist.strings"
+    ],
+```
+
+__需要注意的是，在`XCProject.cs`中，需要ignore重复存在的情况__
+
 ## TODO
 
 * 检查编译环境的脚本
