@@ -23,6 +23,9 @@ LogPath = File.join(DeployProjectPath, "logs")
 #deploy tools path
 ToolPath = File.join(DeployProjectPath, "tools")
 
+#deploy env config path
+EnvPath = File.join(ConfigPath, ".env.yaml")
+
 # require XUnityDeploy Scripts
 require File.expand_path(File.join(DeployProjectPath, "utils/optparse"))
 require File.expand_path(File.join(DeployProjectPath, "utils/logger"))
