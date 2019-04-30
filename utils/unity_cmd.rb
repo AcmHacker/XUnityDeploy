@@ -11,9 +11,9 @@ module XUnityDeploy
             project_path = UnityProjectPath
 
             # get unity command path by env yaml
-            env = []
+            env = {}
             env = YAML.load_file(EnvPath) if File.exist? EnvPath
-            unity = env["unity3d"] ||= "/Applications/Unity/Unity.app/Contents/MacOS/Unity"    
+            unity = env["unity3d"] ||= "/Applications/Unity/Unity.app/Contents/MacOS/Unity"
             # unity = "/Applications/Unity/Unity.app/Contents/MacOS/Unity"
             if DeployOptions[:is_log] then
                 log_path = File.join(LogPath, "deploy_#{DeployOptions[:platform]}.log")
