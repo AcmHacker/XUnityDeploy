@@ -11,6 +11,8 @@ module XUnityDeploy
             compile_android_before
 
             compile_unity
+
+            compile_android_after
         end
 
         def compile_ios
@@ -33,6 +35,13 @@ module XUnityDeploy
         # such as copy files or delete files
         def compile_android_before
             # TODO
+        end
+
+        # clear symbols.zip
+        def compile_android_after
+            Dir[BuildPath + "/android-*.zip"].each do |file|
+                FileUtils.rm file
+            end
         end
 
         def compile_ios_before
