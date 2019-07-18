@@ -46,7 +46,14 @@ namespace :compile do
             Rake::Task["bearychat:send"].invoke("Android端编译完成")
             Rake::Task["bearychat:send"].reenable
         end
-    end    
+    end
+    
+    namespace :seabird do
+        desc "build seabrid unity project"
+        task :build => :update do |t, args|
+            system ("ruby scripts/run_unity_seabird.rb -t #{ENV['target']}")
+        end
+    end
 end
 
 namespace :fir do
