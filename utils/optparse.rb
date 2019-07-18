@@ -3,7 +3,10 @@ require 'optparse'
 
 # deploy options
 DeployOptions = {
+    # 平台
     :platform => :ios,
+    # 目标
+    :target => "",
     # :client_mode => :develop,
     :channel_name => :official,
     :is_log => false,
@@ -17,6 +20,14 @@ ARGV.clone.options do |opts|
     ) do |v| 
         raise "platform param '#{v}' error." unless [:ios, :android].include?(v.to_sym)
         DeployOptions[:platform] = v.to_sym 
+    end
+
+    # target
+    opts.on("-t", "--target=name", String,  
+        "Specifies the client target.",
+        "Default: ios"
+    ) do |v| 
+        DeployOptions[:target] = v
     end
 
     #client mode

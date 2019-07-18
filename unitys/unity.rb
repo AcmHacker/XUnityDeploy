@@ -10,6 +10,9 @@ module XUnityDeploy
     # compile unity ren chang
     autoload :CompileUnityRenChang, File.join(File.dirname(__FILE__), "compile_unity_renchang")
     
+    # compile unity sea brid
+    autoload :CompileUnitySeaBird, File.join(File.dirname(__FILE__), "compile_unity_seabird")
+
     # analyze resource
     autoload :AnalyzeResource, File.join(File.dirname(__FILE__), "analyze_resource")
 end
