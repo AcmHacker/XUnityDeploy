@@ -10,6 +10,12 @@ module XUnityDeploy
         def run
             logger.info("Start Compile Unity (#{DeployOptions[:target]}) ...")
 
+            # rm xcode
+            if DeployOptions[:target].include?("IOS") then
+                xcode_path = File.join(UnityProjectPath, "builds", "xcode")
+                FileUtils.remove_entry(xcode_path, true)
+            end
+
             do_compile
         end        
 
