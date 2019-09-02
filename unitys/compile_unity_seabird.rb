@@ -14,6 +14,9 @@ module XUnityDeploy
             if build_ios? then
                 xcode_path = File.join(UnityProjectPath, "builds", "xcode")
                 FileUtils.remove_entry(xcode_path, true)
+
+                ipa_path = File.join(UnityProjectPath, "builds", "IPA")
+                FileUtils.remove_entry(ipa_path, true)
             else
                 # rm apk
                 apk_path = File.join(UnityProjectPath, "builds", "com.warship.test.apk")
