@@ -31,7 +31,7 @@ module XUnityDeploy
             # end
         end        
         
-        private
+        # private
         def build_ios?
             return DeployOptions[:target].include?("IOS")
         end
@@ -42,13 +42,13 @@ module XUnityDeploy
         end
         
         def do_compile_xcode
-            shell_path = File.join(ToolPath "bash", "create_ipa.sh")
+            shell_path = File.join(ToolPath, "bash", "create_ipa.sh")
             xcode_path = File.join(UnityProjectPath, "builds", "xcode")
             plist_path = File.join(UnityProjectPath, "configs", "packagePListDev.plist")
             xcarchive_path = File.join(UnityProjectPath, "builds", "xcode", "ship.xcarchive")
             ipa_path = File.join(UnityProjectPath, "builds", "IPA")
             cmd = "/bin/bash #{shell_path} #{xcode_path} #{plist_path} #{xcarchive_path} #{ipa_path}"
-            raise "*** Compile Xcode error" unless cmd.sys_call
+            raise "*** Compile Xcode error" unless cmd.sys_call_with_log
         end
     end
 end
