@@ -25,10 +25,10 @@ module XUnityDeploy
 
             do_compile
 
-            # ios build xcode
-            # if build_ios? then
-            #     do_compile_xcode
-            # end
+            ios build xcode
+            if build_ios? then
+                do_compile_xcode
+            end
         end        
         
         # private
