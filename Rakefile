@@ -51,7 +51,7 @@ namespace :compile do
     namespace :seabird do
         desc "build seabrid unity project"
         task :build => :update do |t, args|
-            system ("ruby scripts/run_unity_seabird.rb -t #{ENV['target']}")
+            system ("ruby scripts/run_unity_seabird.rb -t #{ENV['target']} --is_log=true")
         end
     end
 end

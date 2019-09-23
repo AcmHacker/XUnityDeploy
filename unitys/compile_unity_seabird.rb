@@ -5,6 +5,12 @@ module XUnityDeploy
         # ignore super
         def initialize
             raise "pls set target." if DeployOptions[:target] == ""
+
+            if build_ios? then
+                DeployOptions[:platform] = :ios
+            else
+                DeployOptions[:platform] = :android
+            end
         end
 
         def run
