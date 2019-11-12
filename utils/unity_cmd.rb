@@ -14,12 +14,13 @@ module XUnityDeploy
             env = {}
             env = YAML.load_file(EnvPath) if File.exist? EnvPath
             unity = env["unity3d"] ||= "/Applications/Unity/Unity.app/Contents/MacOS/Unity"
+            log_file = env["logFile"] ||= "/dev/stdout"
             # unity = "/Applications/Unity/Unity.app/Contents/MacOS/Unity"
             if DeployOptions[:is_log] then
                 log_path = File.join(LogPath, "deploy_#{DeployOptions[:platform]}.log")
-                cmd = "#{unity} -batchmode -executeMethod #{@method} -quit -logFile /dev/stdout -projectPath #{project_path} | tee #{log_path}"
+                cmd = "#{unity} -batchmode -executeMethod #{@method} -quit -logFile #{log_file} -projectPath #{project_path} | tee #{log_path}"
             else
-                cmd = "#{unity} -batchmode -executeMethod #{@method} -quit -logFile /dev/stdout -projectPath #{project_path}"
+                cmd = "#{unity} -batchmode -executeMethod #{@method} -quit -logFile #{log_file} -projectPath #{project_path}"
             end
             cmd.sys_call_with_log
         end
