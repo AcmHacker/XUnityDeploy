@@ -57,10 +57,23 @@ module XUnityDeploy
         def sign
             ipa_dir_path = BuildPath
             cmd = "#{@xcodebuild_safe} -exportArchive -archivePath #{@xarchive_path} -exportPath #{ipa_dir_path} -exportOptionsPlist #{@export_plist}"
+            unlock_cmd = unlock_keychain_cmd
+            cmd = unlock_cmd + " & " + cmd if !unlock_cmd.empty?
             raise "xcodebuild export error!" unless cmd.sys_call_with_log
 
             #rename
             File.rename(File.join(ipa_dir_path, "Unity-iPhone.ipa"), @ipa_path)
+        end
+
+        def unlock_keychain_cmd
+            env = {}
+            env = YAML.load_file(EnvPath) if File.exist? EnvPath
+            passwd = env["system_passwd"] || ""
+            if passwd.empty? then
+                return ""
+            else 
+                return "security unlock-keychain -p '#{passwd}' ~/Library/Keychains/login.keychain"
+            end
         end
 
         def xcode_version
