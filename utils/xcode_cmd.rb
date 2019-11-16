@@ -20,6 +20,10 @@ module XUnityDeploy
             @xcode_sign_identify = config['build_settings']['CODE_SIGN_IDENTITY']
 
             @xcodebuild_safe = File.join(ToolPath, "bash", "xcodebuild-safe.sh")
+
+            # add sign
+            unlock_cmd = unlock_keychain_cmd
+            @xcodebuild_safe = unlock_cmd + " & " + @xcodebuild_safe if !unlock_cmd.empty?
         end
 
         def run
@@ -57,8 +61,6 @@ module XUnityDeploy
         def sign
             ipa_dir_path = BuildPath
             cmd = "#{@xcodebuild_safe} -exportArchive -archivePath #{@xarchive_path} -exportPath #{ipa_dir_path} -exportOptionsPlist #{@export_plist}"
-            unlock_cmd = unlock_keychain_cmd
-            cmd = unlock_cmd + " & " + cmd if !unlock_cmd.empty?
             raise "xcodebuild export error!" unless cmd.sys_call_with_log
 
             #rename
