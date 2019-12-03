@@ -34,7 +34,7 @@ namespace :compile do
             system ("ruby scripts/run_unity_renchang.rb -p ios --is_log=true")
 
             # system ("ruby scripts/run_bearychat.rb 'IOS端编译完成' ")
-            Rake::Task["bearychat:send"].invoke("IOS端编译完成")
+            Rake::Task["bearychat:send"].invoke("Build IOS over")
             Rake::Task["bearychat:send"].reenable
         end
 
@@ -43,7 +43,7 @@ namespace :compile do
             system ("ruby scripts/run_unity_renchang.rb -p android --is_log=true")
 
             # system ("ruby scripts/run_bearychat.rb 'Android端编译完成' ")
-            Rake::Task["bearychat:send"].invoke("Android端编译完成")
+            Rake::Task["bearychat:send"].invoke("Build Android over")
             Rake::Task["bearychat:send"].reenable
         end
     end
