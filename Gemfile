@@ -6,3 +6,6 @@ gem 'xcodeproj'
 # bearychat
 # gem 'bearychat'
 gem 'bearychat-notifier'
+
+# fir
+gem 'fir-cli'
