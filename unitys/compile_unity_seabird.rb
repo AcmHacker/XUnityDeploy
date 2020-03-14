@@ -25,8 +25,10 @@ module XUnityDeploy
                 FileUtils.remove_entry(ipa_path, true)
             else
                 # rm apk
-                apk_path = File.join(UnityProjectPath, "builds", "com.warship.test.apk")
-                FileUtils.remove_file(apk_path, true)
+                apk_path = File.join(UnityProjectPath, "builds", "*.apk")
+                Dir[apk_path].each {|filename| FileUtils.remove_file(filename, true) }
+                aab_path = File.join(UnityProjectPath, "builds", "*.aab")
+                Dir[aab_path].each {|filename| FileUtils.remove_file(filename, true) }
             end
 
             do_compile
