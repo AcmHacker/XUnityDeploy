@@ -64,7 +64,14 @@ module XUnityDeploy
             raise "xcodebuild export error!" unless cmd.sys_call_with_log
 
             #rename
-            File.rename(File.join(ipa_dir_path, "Unity-iPhone.ipa"), @ipa_path)
+            File.rename(File.join(ipa_dir_path, ipa_name), @ipa_path)
+        end
+
+        def ipa_name
+            env = {}
+            env = YAML.load_file(EnvPath) if File.exist? EnvPath
+            name = env["ipa_name"] || "Unity-iPhone.ipa"
+            return name
         end
 
         def unlock_keychain_cmd
