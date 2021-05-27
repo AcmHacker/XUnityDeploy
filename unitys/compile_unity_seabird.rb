@@ -52,7 +52,7 @@ module XUnityDeploy
         def do_compile_xcode
             shell_path = File.join(ToolPath, "bash", "create_ipa.sh")
             xcode_path = File.join(UnityProjectPath, "builds", "xcode")
-            plist_path = File.join(UnityProjectPath, "configs", "packagePListDev.plist")
+            plist_path = File.join(UnityProjectPath, "configs", "packagePList.plist")
             xcarchive_path = File.join(UnityProjectPath, "builds", "xcode", "ship.xcarchive")
             ipa_path = File.join(UnityProjectPath, "builds", "IPA")
             cmd = "/bin/bash #{shell_path} #{xcode_path} #{plist_path} #{xcarchive_path} #{ipa_path}"
