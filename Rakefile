@@ -54,12 +54,12 @@ namespace :compile do
             system ("ruby scripts/run_unity_seabird.rb -t #{ENV['target']} --is_log=true")
         end
     end
+end
 
-    namespace :channel do
-        desc "copy channel configs"
-        task :set do |t, args|
-            system("ruby scripts/run_channel.rb #{Env['channel']}")
-        end
+namespace :channel do
+    desc "copy channel configs"
+    task :set do |t, args|
+        system("ruby scripts/run_channel.rb #{ENV['channel']}")
     end
 end
 
