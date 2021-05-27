@@ -14,6 +14,9 @@ DeployProjectPath = File.join(UnityProjectPath, "XUnityDeploy")
 #deploy config file path
 ConfigPath = File.join(UnityProjectPath, "XUnityDeploy_configs")
 
+#deploy channel files path
+ChannelPath = File.join(UnityProjectPath, "XUnityDeploy_channels")
+
 #deploy build path
 BuildPath = File.join(DeployProjectPath, "builds")
 
