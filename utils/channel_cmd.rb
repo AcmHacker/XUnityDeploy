@@ -9,18 +9,18 @@ module XUnityDeploy
             raise "the channel #{channel_name} is invalid" unless check(channel_name)
 
             # delete ConfigPath
-            Dir.rmdir(ConfigPath)
+            FileUtils.rm_rf(ConfigPath)
 
             # create ConfigPath
             Dir.mkdir(ConfigPath)
 
             # copy ChannelPath (channel config) to ConfigPath
-            FileUtils.cp_r(File.join(ChannelPath, channel_name, "/"), ConfigPath)
+            FileUtils.cp_r(File.join(ChannelPath, channel_name, "XUnityDeploy_configs"), UnityProjectPath)
         end
 
         private
         def check channel_name
-            return Dir.exists?(File.join(ChannelPath, channel_name))
+            return channel_name != nil && Dir.exists?(File.join(ChannelPath, channel_name, "XUnityDeploy_configs"))
         end
     end
 end
