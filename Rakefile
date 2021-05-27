@@ -57,7 +57,7 @@ namespace :compile do
 
     namespace :channel do
         desc "copy channel configs"
-        task :set => do |t, args|
+        task :set do |t, args|
             system("ruby scripts/run_channel.rb #{Env['channel']}")
         end
     end
